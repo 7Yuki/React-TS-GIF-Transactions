@@ -5,8 +5,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import logo from "../images/logo.png";
 import React from "react";
 
-const NavbarItem = (title: any, classprops: any): JSX.Element => {
-  return <li className={`mx-4 cursor-pointer ${classprops}`}>{title.src}</li>;
+const NavbarItem = (title: any, classprops: string): JSX.Element => {
+  return <li className={`mx-4 cursor-pointer ${classprops}`}>{typeof title === 'string' ? title : title?.src}</li>;
 };
 const Navbar = (): JSX.Element => {
   const [toggleMenu, setToggleMenu]: React.ComponentState =
@@ -18,8 +18,8 @@ const Navbar = (): JSX.Element => {
         <img src={logo} alt="logo" className="w-32 cursor-pointer" />
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {["Market", "Exchange", "Tutorials", "Wallets"].map((item, index) => (
-          <NavbarItem key={item + index} title={item} />
+        {["Market", "Exchange", "Tutorials", "Wallets"].map((item: string, index) => (
+          NavbarItem(item,"")
         ))}
         <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
           Login
@@ -50,11 +50,8 @@ const Navbar = (): JSX.Element => {
             </li>
             {["Market", "Exchange", "Tutorials", "Wallets"].map(
               (item: string, index: number) => (
-                <NavbarItem
-                  key={item + index}
-                  title={item}
-                  classprops="my-2 text-lg"
-                />
+                NavbarItem(item,"my-2 text-lg")
+                
               )
             )}
           </ul>
