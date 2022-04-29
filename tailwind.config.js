@@ -3,6 +3,10 @@ module.exports = {
   mode: "jit",
   darkMode: false, // or 'media' or 'class'
   theme: {
+    colors: {
+      'hover-blue': '#2546bd',
+      'main-blue': '#2952e3'
+    },
     fontFamily: {
       display: ["Open Sans", "sans-serif"],
       body: ["Open Sans", "sans-serif"],
