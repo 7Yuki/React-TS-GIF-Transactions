@@ -3,14 +3,17 @@ import { HiMenuAlt4 } from "react-icons/hi";
 //eslint-disable-next-line
 import { AiOutlineClose } from "react-icons/ai";
 import logo from "../images/logo.png";
-import React from "react";
+import { useState } from "react";
 
-const NavbarItem = (title: any, classprops: string): JSX.Element => {
-  return <li className={`mx-4 cursor-pointer ${classprops}`}>{typeof title === 'string' ? title : title?.src}</li>;
+const NavbarItem = (title: string, classprops: string) => {
+  return (
+    <li className={`mx-4 cursor-pointer ${classprops}`}>
+      {title}
+    </li>
+  );
 };
-const Navbar = (): JSX.Element => {
-  const [toggleMenu, setToggleMenu]: React.ComponentState =
-    React.useState(false);
+const Navbar = () => {
+  const [toggleMenu, setToggleMenu]: React.ComponentState = useState(false);
 
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
@@ -18,10 +21,10 @@ const Navbar = (): JSX.Element => {
         <img src={logo} alt="logo" className="w-32 cursor-pointer" />
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {["Market", "Exchange", "Tutorials", "Wallets"].map((item: string, index) => (
-          NavbarItem(item,"")
-        ))}
-        <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
+        {["Market", "Exchange", "Tutorials", "Wallets"].map(
+          (item: string, index:number) => NavbarItem(item, "")
+        )}
+        <li className="bg-main-blue py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-hover-blue">
           Login
         </li>
       </ul>
@@ -49,10 +52,7 @@ const Navbar = (): JSX.Element => {
               <AiOutlineClose onClick={() => setToggleMenu(false)} />
             </li>
             {["Market", "Exchange", "Tutorials", "Wallets"].map(
-              (item: string, index: number) => (
-                NavbarItem(item,"my-2 text-lg")
-                
-              )
+              (item: string, index: number) => NavbarItem(item, "my-2 text-lg")
             )}
           </ul>
         )}
