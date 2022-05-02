@@ -1,4 +1,11 @@
-import { Navbar, Footer, Welcome, Transactions, Services } from "./components";
+
+import Loader from "./components/Loader";
+import Navbar from "./components/Navbar";
+import Welcome from "./components/Welcome";
+import Footer from "./components/Footer";
+import Services from "./components/Services";
+import Transactions from "./components/Transactions";
+
 import "./App.css";
 
 const App = () => {
