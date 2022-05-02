@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
-import { Loader } from "./";
 
 const commonStyles: string =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
@@ -11,20 +10,15 @@ type InputProps = {
   placeholder: string;
   name: string;
   type: string;
-  handleChange: (e: React.ChangeEvent, name: string) => void;
+  handleChange: (event: React.ChangeEvent, name: string) => void;
 };
 
-const Input = ({
-  placeholder,
-  name,
-  type,
-  handleChange,
-}: InputProps) => (
+const Input = ({ placeholder, name, type, handleChange }: InputProps) => (
   <input
     placeholder={placeholder}
     type={type}
     step="0.0001"
-    onChange={(e) => handleChange(e, name)}
+    onChange={(event) => handleChange(event, name)}
     className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
   />
 );
@@ -32,8 +26,8 @@ const Input = ({
 const Welcome = () => {
   return (
     <div className="flex w-full justify-center items-center">
-      <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
-        <div className="flex flex-1 justify-start flex-col md:mr-10">
+      <div className="flex mf:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
+        <div className="flex flex-1 justify-start flex-col mf:mr-10">
           <h1 className="text-3x1 sm:text-5xl text-white text-gradient py-1">
             Send Crypto <br /> across the world!
           </h1>
@@ -56,7 +50,7 @@ const Welcome = () => {
             <div className={`rounded-br-2xl ${commonStyles}`}>Blockchain</div>
           </div>
         </div>
-        <div className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10">
+        <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
           <div className="p-3 justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphism">
             <div className="flex justify-between flex-col w-full h-full">
               <div className="flex justify-between items-start">
@@ -99,13 +93,14 @@ const Welcome = () => {
             <div className="h-[1px] w-full bg-gray-400 my-2" />
             {false ? ( // still need to implement isLoading state from Loader.tsx
               <div className="flex justify-center items-center p-y3">
-                  <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-700"/>
+                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-700" />
               </div>
             ) : (
-              <button 
-              className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointer hover:bg-[#3d4f7c]"
-              type="button" 
-              onClick={handleSubmit}>
+              <button
+                className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointer hover:bg-[#3d4f7c]"
+                type="button"
+                onClick={handleSubmit}
+              >
                 Send Now
               </button>
             )}
